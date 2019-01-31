@@ -1,0 +1,26 @@
+import time
+
+print("Jan 0, Feb 31, Mar 62, Apr 93, May 123, Jun 154, Jul 185, Aug 216, Sep 247, Oct 278, Nov 319, Dec 350 (Not entirely accurate) ")
+DesignatedDay = int(input("Enter the day you want to countdown to "))
+DesignatedYear = int(input("Enter the year you want to countdown to "))
+difference = 0
+while True:
+    # Day of the year in decimal format
+    DOTY = int(time.strftime("%j"))
+    CurrentYear = time.strftime("%Y")
+    differenceY = DesignatedYear - int(CurrentYear)
+    if differenceY > 0:
+        difference = ((365 * differenceY) - (DesignatedDay + DOTY))
+    elif differenceY == 0:
+        difference = DesignatedDay - DOTY
+    # Calculates the current Hr, Min, Sec and assigns them to variables
+    Hr = time.strftime("%H")
+    Min = time.strftime("%M")
+    Sec = time.strftime("%S")
+    # Calculates the seconds by subtracting the amount of days minus the seconds passed today
+    SecondsPassed = ((int(Hr) * 60 * 60) + (int(Min) * 60) + int(Sec))
+    print("\n months till graduation " + str((((difference * 24 * 60 * 60) - int(SecondsPassed)) / (60 * 60 * 24 * 31))))
+    print(" Seconds till graduation " + str(((difference * 24 * 60 * 60) - int(SecondsPassed))) + "\n")
+    time.sleep(1)
+
+
